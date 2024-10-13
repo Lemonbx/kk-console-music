@@ -1,4 +1,4 @@
-package com.luoyuer.com.luoyuer
+package com.luoyuer
 
 import com.luoyuer.lrc.Lrc
 import javazoom.jl.player.Player
