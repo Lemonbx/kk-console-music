@@ -28,7 +28,7 @@ public class Lrc(
         this.lrcStr = null
     }
 
-    public fun getLyrics(mils: Int): Lyrics {
+    public fun getLyrics(mills: Int): Lyrics {
         val spec = checkDataNotNull(data)
         if (spec.lyrics.isEmpty()) {
             return Lyrics.EMPTY
@@ -38,7 +38,13 @@ public class Lrc(
             if (i == spec.lyrics.lastIndex) {
                 return lyric
             }
-            if (mils > lyric.ts) return lyric
+            if (mills < lyric.ts) {
+                return if (i == 0) {
+                    lyric
+                } else {
+                    spec.lyrics[i - 1]
+                }
+            }
         }
         return spec.lyrics.last()
     }
