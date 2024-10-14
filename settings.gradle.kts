@@ -3,3 +3,5 @@ plugins {
 }
 rootProject.name = "kk-console-music"
 
+include(":kcm-common")
+include(":kcm-app")
