@@ -1,41 +1,11 @@
 package com.luoyuer
 
-import com.luoyuer.player.Lrc
-import javazoom.jl.player.Player
-import org.jaudiotagger.audio.AudioFile
-import org.jaudiotagger.audio.AudioFileIO
-import org.jaudiotagger.tag.FieldKey
-import java.io.File
-import java.io.FileInputStream
-import java.nio.charset.Charset
-import kotlin.concurrent.thread
+import com.luoyuer.player.Player
+import com.luoyuer.player.song.impl.LocalSong
+import com.luoyuer.player.song.impl.NetSong
 
 fun main() {
-    val audioFile = File("audio/Gifty - 心形纪念/Gifty - 心形纪念.mp3")
-    val fileInfo = AudioFileIO.read(audioFile)
-    val lrc = Lrc(File("audio/Gifty - 心形纪念/Gifty - 心形纪念.lrc").readLines(Charset.forName("GB2312")))
-    val length = readLength(fileInfo)
-    val lengthTime = numberToTime(length)
-    val taskTag = buildTaskName(fileInfo)
-    val player = Player(FileInputStream(audioFile))
-    thread {
-        player.play()
-    }
-    thread {
-        println()
-        while (!player.isComplete){
-            outLine("${taskTag} ${numberToTime((player.position/1000).toLong())}/${lengthTime} ${lrc.getText(player.position.toLong())}")
-            Thread.sleep(100)
-        }
-    }
-}
-fun readLength(fileInfo:AudioFile) = fileInfo.audioHeader?.trackLength?.toLong()?:throw RuntimeException("读取时长失败")
-fun buildTaskName(fileInfo: AudioFile) = "${fileInfo.tag.getFirst(FieldKey.TITLE)} - ${fileInfo.tag.getFirst(FieldKey.ARTIST)}"
-fun outLine(text:String){
-    print("\r$text")
-}
-fun numberToTime(time:Long):String{
-    var m = time/60
-    var s = time-m*60
-    return "${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}"
+    val player = Player()
+//    player.addSong(LocalSong("audio/Gifty - 心形纪念/Gifty - 心形纪念.mp3","audio/Gifty - 心形纪念/Gifty - 心形纪念.lrc"))
+    player.addSong(NetSong("1487282121", NetSong.NetSongFilter.ID, NetSong.NetSongType.NETEASE))
 }

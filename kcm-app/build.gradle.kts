@@ -12,11 +12,11 @@ version = "1.0-SNAPSHOT"
 dependencies {
     testImplementation(kotlin("test"))
     implementation("dev.reimer:progressbar-ktx:0.1.0")
-    // https://mvnrepository.com/artifact/net.jthink/jaudiotagger
     implementation("net.jthink:jaudiotagger:3.0.1")
     implementation(project(":kcm-common"))
-// https://mvnrepository.com/artifact/javazoom/jlayer
     implementation("javazoom:jlayer:1.0.1")
+    implementation("cn.hutool:hutool-all:5.8.32")
+
 }
 
 tasks.test {
