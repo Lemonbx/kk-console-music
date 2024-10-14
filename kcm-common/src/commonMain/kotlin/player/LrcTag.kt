@@ -29,7 +29,12 @@ public sealed class LrcTag(
      * Length of the song (mm:ss)
      */
     public class Length(value: String) : LrcTag("length", value) {
-        public val lenInMils: Int = TODO()
+        public val lenInMils: Int = parseLength()
+
+        private fun parseLength(): Int {
+            val (min, sec) = value.split(':').map(String::toInt)
+            return min * 60 * 1000 + sec * 1000
+        }
     }
 
     /**
@@ -64,6 +69,24 @@ public sealed class LrcTag(
 
     override fun toString(): String {
         return "[$tagName: $value]"
+    }
+
+    public companion object {
+        public fun from(name: String, value: String): LrcTag {
+            return when (name) {
+                "ti" -> Ti(value)
+                "ar" -> Ar(value)
+                "al" -> Au(value)
+                "length" -> Length(value)
+                "by" -> By(value)
+                "offset" -> Offset(value)
+                "re" -> Re(value)
+                "tool" -> Tool(value)
+                "ve" -> Ve(value)
+                "#" -> Comments(value)
+                else -> throw IllegalArgumentException("Unknown tag name: $name")
+            }
+        }
     }
 
 }

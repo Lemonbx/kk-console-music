@@ -29,7 +29,7 @@ class LocalSong(
             if (lrcFile?.exists() != true){
                 System.err.println("LRC File does not exists!")
             }else{
-                lrc = Lrc(lrcFile!!.readLines(charset("GB2312")))
+                lrc = Lrc(lrcFile!!.readText(charset("GB2312")))
             }
         }
     }

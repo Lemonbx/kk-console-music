@@ -33,10 +33,12 @@ public class Lrc(
         if (spec.lyrics.isEmpty()) {
             return Lyrics.EMPTY
         }
-        for (lyric in spec.lyrics) {
-            if (mils in lyric.range) {
+        for (i in spec.lyrics.indices) {
+            val lyric = spec.lyrics[i]
+            if (i == spec.lyrics.lastIndex) {
                 return lyric
             }
+            if (mils > lyric.ts) return lyric
         }
         return spec.lyrics.last()
     }
@@ -48,3 +50,5 @@ public class Lrc(
         return spec
     }
 }
+
+public val emptyLrc: Lrc = Lrc("", false)

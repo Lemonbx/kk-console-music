@@ -38,7 +38,7 @@ data class NetSong(
                     val list = entries.getJSONArray("data")
                     val jsonObject = list.getJSONObject(0)
                     val url = jsonObject.getStr("url")
-                    val lrcStr = jsonObject.getStr("lrc").split("\n")
+                    val lrcStr = jsonObject.getStr("lrc")
                     audioFile = HttpUtil.downloadBytes(url)
                     val dir = File(".mp3")
                     dir.mkdir()

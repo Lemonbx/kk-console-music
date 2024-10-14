@@ -36,7 +36,7 @@ class Player {
                         while (!player.isComplete){
                             val message =
                                 "\r${taskTag} ${numberToTime((player.position / 1000).toLong())}/${lengthTime} ${
-                                    song.getLrc().getText(player.position.toLong())
+                                    song.getLrc().getLyrics(player.position).text
                                 }"
                             print(message.padEnd((lastLrcLength - message.length).coerceAtLeast(0) *10,' '))
                             lastLrcLength = message.length
