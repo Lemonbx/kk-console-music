@@ -2,9 +2,9 @@
 @file:JsExport
 package com.luoyuer.player
 
+import com.luoyuer.player.internal.LrcParser
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
-import kotlin.time.Duration
 
 public class Lrc(
     lrcStr: String,
@@ -12,6 +12,7 @@ public class Lrc(
 ) {
 
     private var lrcStr: String? = lrcStr
+    private var data: LrcSpec? = null
 
     init {
         if (doParse) {
@@ -23,12 +24,27 @@ public class Lrc(
     public fun parse() {
         val lrcStr = this.lrcStr
             ?: throw IllegalStateException("Lrc already parsed")
-        val lines = lrcStr.split('\n')
-
+        this.data = LrcParser.parse(lrcStr)
         this.lrcStr = null
     }
 
-    public fun getText(duration: Duration): String {
-        TODO()
+    public fun getLyrics(mils: Int): Lyrics {
+        val spec = checkDataNotNull(data)
+        if (spec.lyrics.isEmpty()) {
+            return Lyrics.EMPTY
+        }
+        for (lyric in spec.lyrics) {
+            if (mils in lyric.range) {
+                return lyric
+            }
+        }
+        return spec.lyrics.last()
+    }
+
+    private fun checkDataNotNull(spec: LrcSpec?): LrcSpec {
+        if (spec == null) {
+            throw IllegalStateException("Lrc spec not parsed")
+        }
+        return spec
     }
 }

@@ -22,6 +22,7 @@ kotlin {
         all {
             languageSettings {
                 optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlin.js.ExperimentalJsExport")
             }
         }
     }
