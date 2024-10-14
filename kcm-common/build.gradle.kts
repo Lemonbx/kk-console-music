@@ -4,6 +4,9 @@ plugins {
 }
 
 kotlin {
+
+    explicitApi()
+
     jvm()
 
     js {
