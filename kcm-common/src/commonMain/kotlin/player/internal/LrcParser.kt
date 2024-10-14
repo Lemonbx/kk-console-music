@@ -36,10 +36,14 @@ internal object LrcParser {
         val i2 = str.indexOf('.')
         val i3 = str.indexOf(']')
 
-        val text = str.substring(i3 + 1, str.length)
+        val text = if (str.length > i3 + 1) str.substring(i3 + 1, str.length) else ""
         val t1 = str.substring(1, i1).toInt()
         val t2 = str.substring(i1 + 1, i2).toInt()
-        val t3 = str.substring(i2 + 1, i3).toInt()
+        val t3 = try {
+            str.substring(i2 + 1, i3).toInt()
+        } catch (_: Exception) {
+            0
+        }
         val mills = t1 * 60 * 1000 + t2 * 1000 + t3 * 10
         return Lyrics(mills, text)
     }
