@@ -12,6 +12,7 @@ class Player {
     private var state: State = State.STOPPED
     private var playThread: Thread? = null
     private var lrcThread: Thread? = null
+    private var lastLrcLength = 0
     fun addSong(song: SongAdapter) {
         playList.add(song)
         play()
@@ -33,7 +34,12 @@ class Player {
                     //启动歌词线程
                     lrcThread = thread{
                         while (!player.isComplete){
-                            print("\r${taskTag} ${numberToTime((player.position/1000).toLong())}/${lengthTime} ${song.getLrc().getText(player.position.toLong())}")
+                            val message =
+                                "\r${taskTag} ${numberToTime((player.position / 1000).toLong())}/${lengthTime} ${
+                                    song.getLrc().getText(player.position.toLong())
+                                }"
+                            print(message.padEnd((lastLrcLength - message.length).coerceAtLeast(0) *10,' '))
+                            lastLrcLength = message.length
                             try{
                                 Thread.sleep(100)
                             }catch (e: Exception){}
@@ -57,9 +63,6 @@ class Player {
     }
     private fun readLength(fileInfo:AudioFile) = fileInfo.audioHeader?.trackLength?.toLong()?:throw RuntimeException("读取时长失败")
     private fun buildTaskName(fileInfo: AudioFile) = "${fileInfo.tag.getFirst(FieldKey.TITLE)} - ${fileInfo.tag.getFirst(FieldKey.ARTIST)}"
-    private fun outLine(text:String){
-        print("\r$text")
-    }
     private fun numberToTime(time:Long):String{
         var m = time/60
         var s = time-m*60
