@@ -1,15 +1,11 @@
-package com.luoyuer.lrc
-
-import java.io.File
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
+package com.luoyuer.player
 
 /**
  * @param lrcFile 歌词文件
  * @param wordstep 按字出歌词
  */
 data class Lrc(
-    val lrcFile:File,
+    val lrcStr: List<String>,
     val wordstep:Boolean = true
 ){
     data class SingleLrc(val startTime:Long,val endTime:Long,val txt:String)
@@ -20,9 +16,8 @@ data class Lrc(
     private var by:String? = null
     private var offset:Long = 0
     init {
-        val readLines = lrcFile.readLines(charset = Charset.forName("GB2312"))
         var begin = true
-        for ((index, item) in readLines.withIndex()) {
+        for ((index, item) in lrcStr.withIndex()) {
             if (!item.startsWith("[")){
                 //如果不是[开头，说明空行，跳过
                 break
@@ -65,7 +60,7 @@ data class Lrc(
                 val (time,text) = readLrcInfo(item)
                 //获取下一句歌词时间
                 var nextTime = 0L
-                if (index == readLines.size-1 || !readLines[index+1].startsWith("[")){
+                if (index == lrcStr.size-1 || !lrcStr[index+1].startsWith("[")){
                     //如果到达文件尾
                     //获取上一句歌词长度，估算
                     if (lrcs.isEmpty()){
@@ -75,7 +70,7 @@ data class Lrc(
                         nextTime = time+(((last.endTime - last.startTime)/(last.txt.length))*text.length)
                     }
                 }else{
-                    val (nTime, _) = readLrcInfo(readLines[index+1])
+                    val (nTime, _) = readLrcInfo(lrcStr[index+1])
                     nextTime = nTime
                 }
                 lrcs+=SingleLrc(time+offset,nextTime+offset,text)
@@ -117,3 +112,4 @@ data class Lrc(
         return minu*60*1000+sec*1000+ms to text
     }
 }
+val emptyLrc = Lrc(emptyList<String>())

@@ -1,18 +1,19 @@
 package com.luoyuer
 
-import com.luoyuer.lrc.Lrc
+import com.luoyuer.player.Lrc
 import javazoom.jl.player.Player
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
 import org.jaudiotagger.tag.FieldKey
 import java.io.File
 import java.io.FileInputStream
+import java.nio.charset.Charset
 import kotlin.concurrent.thread
 
 fun main() {
     val audioFile = File("audio/Gifty - 心形纪念/Gifty - 心形纪念.mp3")
     val fileInfo = AudioFileIO.read(audioFile)
-    val lrc = Lrc(File("audio/Gifty - 心形纪念/Gifty - 心形纪念.lrc"))
+    val lrc = Lrc(File("audio/Gifty - 心形纪念/Gifty - 心形纪念.lrc").readLines(Charset.forName("GB2312")))
     val length = readLength(fileInfo)
     val lengthTime = numberToTime(length)
     val taskTag = buildTaskName(fileInfo)
