@@ -36,7 +36,7 @@ internal object LrcParser {
         val i2 = str.indexOf('.')
         val i3 = str.indexOf(']')
 
-        val text = str.substring(i3 + 1, str.length - 1)
+        val text = str.substring(i3 + 1, str.length)
         val t1 = str.substring(1, i1).toInt()
         val t2 = str.substring(i1 + 1, i2).toInt()
         val t3 = str.substring(i2 + 1, i3).toInt()
