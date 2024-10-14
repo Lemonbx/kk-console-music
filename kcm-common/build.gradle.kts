@@ -11,7 +11,18 @@ kotlin {
 
     js {
         browser {
+            webpackTask {
+                output.libraryTarget = "commonjs2"
+            }
+            binaries.executable()
+        }
+    }
 
+    sourceSets {
+        all {
+            languageSettings {
+                optIn("kotlin.contracts.ExperimentalContracts")
+            }
         }
     }
 }

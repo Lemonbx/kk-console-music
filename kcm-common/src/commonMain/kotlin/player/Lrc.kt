@@ -1,5 +1,9 @@
+@file:OptIn(ExperimentalJsExport::class)
+@file:JsExport
 package com.luoyuer.player
 
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
 import kotlin.time.Duration
 
 public class Lrc(

@@ -23,7 +23,7 @@ public sealed class LrcTag(
     /**
      * Author of the song
      */
-    public class Auto(value: String) : LrcTag("au", value)
+    public class Au(value: String) : LrcTag("au", value)
 
     /**
      * Length of the song (mm:ss)
