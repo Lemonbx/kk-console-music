@@ -2,7 +2,10 @@
 plugins {
     kotlin("multiplatform")
 }
-
+dependencies{
+    commonMainImplementation(kotlin("stdlib-common"))
+    commonMainImplementation(kotlin("stdlib"))
+}
 kotlin {
 
     explicitApi()
