@@ -5,9 +5,9 @@ package com.luoyuer.player
  */
 public interface Player {
     /**
-     * 设置要播放的歌曲。若当前正在播放，停止，开始从头播放新设置的歌曲
+     * 正在播放的歌曲。若当前正在播放，停止，开始从头播放新设置的歌曲
      */
-    public fun setSong(song: Song)
+    public var song: Song
 
     /**
      * 播放歌曲
