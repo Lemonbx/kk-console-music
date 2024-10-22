@@ -1,8 +1,8 @@
-package com.luoyuer.player.internal
+package com.luoyuer.player.lrc.internal
 
-import com.luoyuer.player.LrcSpec
-import com.luoyuer.player.LrcTag
-import com.luoyuer.player.Lyrics
+import com.luoyuer.player.lrc.LrcSpec
+import com.luoyuer.player.lrc.LrcTag
+import com.luoyuer.player.lrc.Lyrics
 
 internal object LrcParser {
 

@@ -1,8 +1,5 @@
-package com.luoyuer.player
+package com.luoyuer.player.lrc
 
-import kotlin.js.JsExport
-
-@JsExport
 public class Lyrics(
     public val ts: Int,
     public val text: String,

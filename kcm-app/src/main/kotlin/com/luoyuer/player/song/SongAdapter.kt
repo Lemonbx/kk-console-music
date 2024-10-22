@@ -1,6 +1,6 @@
 package com.luoyuer.player.song
 
-import com.luoyuer.player.Lrc
+import com.luoyuer.player.lrc.Lrc
 import org.jaudiotagger.audio.AudioFile
 import java.io.InputStream
 

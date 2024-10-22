@@ -1,4 +1,4 @@
-package com.luoyuer.player
+package com.luoyuer.player.lrc
 
 public sealed class LrcTag(
     public val tagName: String,

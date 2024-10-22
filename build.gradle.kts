@@ -5,7 +5,7 @@ plugins {
 
 allprojects {
     repositories {
-        mavenLocal()
+//        mavenLocal()
         mavenCentral()
         maven("https://jitpack.io")
     }

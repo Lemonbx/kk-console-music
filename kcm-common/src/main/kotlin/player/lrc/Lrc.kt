@@ -1,10 +1,6 @@
-@file:OptIn(ExperimentalJsExport::class)
-@file:JsExport
-package com.luoyuer.player
+package com.luoyuer.player.lrc
 
-import com.luoyuer.player.internal.LrcParser
-import kotlin.js.ExperimentalJsExport
-import kotlin.js.JsExport
+import com.luoyuer.player.lrc.internal.LrcParser
 
 public class Lrc(
     lrcStr: String,

@@ -1,7 +1,7 @@
 package com.luoyuer.player.song.impl
 
-import com.luoyuer.player.Lrc
-import com.luoyuer.player.emptyLrc
+import com.luoyuer.player.lrc.Lrc
+import com.luoyuer.player.lrc.emptyLrc
 import com.luoyuer.player.song.SongAdapter
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO

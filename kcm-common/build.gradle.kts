@@ -1,37 +1,18 @@
 
 plugins {
-    kotlin("multiplatform")
+    kotlin("jvm")
 }
+group = "com.luoyuer"
+version = "1.0-SNAPSHOT"
 dependencies{
-    commonMainImplementation(kotlin("stdlib-common"))
-    commonMainImplementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 }
 kotlin {
-
-    explicitApi()
-
-    jvm()
-
-    js {
-        browser {
-            webpackTask {
-                output.libraryTarget = "commonjs2"
-            }
-            binaries.executable()
-        }
-    }
-
-    sourceSets {
-        all {
-            languageSettings {
+    jvmToolchain(21)
+    sourceSets{
+        all{
+            languageSettings{
                 optIn("kotlin.contracts.ExperimentalContracts")
-                optIn("kotlin.js.ExperimentalJsExport")
-            }
-        }
-
-        val commonMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
             }
         }
     }

@@ -3,18 +3,14 @@ package com.luoyuer.player.song.impl
 import cn.hutool.core.io.FileUtil
 import cn.hutool.http.HttpUtil
 import cn.hutool.json.JSONUtil
-import com.luoyuer.player.Lrc
-import com.luoyuer.player.emptyLrc
+import com.luoyuer.player.lrc.Lrc
+import com.luoyuer.player.lrc.emptyLrc
 import com.luoyuer.player.song.SongAdapter
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
 import org.jaudiotagger.tag.FieldKey
-import org.jaudiotagger.tag.Tag
-import org.jaudiotagger.tag.wav.WavInfoTag
-import org.jaudiotagger.tag.wav.WavTag
 import java.io.ByteArrayInputStream
 import java.io.File
-import java.io.FileInputStream
 import java.io.InputStream
 
 data class NetSong(

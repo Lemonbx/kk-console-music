@@ -1,4 +1,4 @@
-package com.luoyuer.player
+package com.luoyuer.player.lrc
 
 public class LrcSpec(
     public val tags: List<LrcTag>,
