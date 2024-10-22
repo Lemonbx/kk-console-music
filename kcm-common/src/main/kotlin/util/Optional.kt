@@ -1,13 +1,13 @@
 package com.luoyuer.util
 
-import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
-public sealed class Optional<out T : Any> {
+public sealed class Optional<out T> {
 
-    public data class Some<out T : Any>(val value: T) : Optional<T>()
+    public data class Some<out T>(val value: T) : Optional<T>()
 
     public data object None : Optional<Nothing>()
+
     public fun hasValue(): Boolean {
         contract {
             returns(true) implies (this@Optional is Some<T>)
