@@ -20,6 +20,7 @@ dependencies {
     implementation(project(":kcm-common"))
     implementation("javazoom:jlayer:1.0.1")
     implementation("cn.hutool:hutool-all:5.8.32")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.9.0")
 
 }
 
