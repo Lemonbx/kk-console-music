@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.luoyuer.ui.controller.MainController"
+            prefHeight="400.0" prefWidth="600.0"
+            alignment="CENTER"
+            spacing="10"
+            stylesheets="@/style/root.css">
+
+    <Label text="Hello"/>
+    <Label fx:id="counter" text="Count: 0" style="-fx-text-fill: -kk-primary-color"/>
+    <Button onAction="#onBtnClick" text="Click"/>
+
+</VBox>
