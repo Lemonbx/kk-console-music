@@ -9,13 +9,14 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.luoyuer.ui.controller.MainController"
-            prefHeight="400.0" prefWidth="600.0"
+            prefHeight="600.0" prefWidth="900.0"
             alignment="CENTER"
             spacing="10"
-            stylesheets="@/style/root.css">
+            stylesheets="@/style/root.css"
+            style="-fx-background-color: -kk-secondary-500">
 
     <Label text="Hello"/>
-    <Label fx:id="counter" text="Count: 0" style="-fx-text-fill: -kk-primary-color"/>
+    <Label fx:id="counter" text="Count: 0" style="-fx-text-fill: -kk-primary-500"/>
     <Button onAction="#onBtnClick" text="Click"/>
     <fx:include source="bottom_bar.fxml"/>
 </VBox>

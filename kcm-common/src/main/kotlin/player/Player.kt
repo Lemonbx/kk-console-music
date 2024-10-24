@@ -9,6 +9,8 @@ public interface Player {
      */
     public var song: Song
 
+    public val state: PlayStateEnum
+
     /**
      * 播放歌曲
      */
@@ -32,10 +34,10 @@ public interface Player {
     /**
      * 播放状态切换时的回调
      */
-    public fun onPlayStateChange(callback: (PlayStateEnum)->Unit)
+    public fun addOnPlayStateChangeListener(callback: (old: PlayStateEnum, new: PlayStateEnum) -> Unit)
 
     /**
      * 播放进度改变时的回调
      */
-    public fun onTimeChange(callback:(Long)-> Unit)
+    public fun addOnTimeChangeListener(callback:(Long) -> Unit)
 }

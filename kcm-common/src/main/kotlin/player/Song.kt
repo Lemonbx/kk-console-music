@@ -15,3 +15,9 @@ public interface Song {
         public fun ofFile(block: FileSongBuilder.() -> Unit): Song = FileSongBuilder().apply(block).build()
     }
 }
+
+internal object EmptySong : Song {
+
+    override val spec: SongSpec
+        get() = TODO("Not yet implemented")
+}

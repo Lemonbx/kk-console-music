@@ -1,0 +1,16 @@
+
+.slider .thumb {
+    -fx-opacity: 0;
+}
+
+.slider:hover .thumb {
+    -fx-opacity: 1;
+}
+
+.slider .track{
+    -fx-background-color: -kk-primary-200;
+}
+
+.slider:pressed .thumb {
+    -fx-opacity: 1;
+}

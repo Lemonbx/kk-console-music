@@ -1,5 +1,41 @@
 
 * {
-    -kk-primary-color: #3498db;
-    -kk-secondary-color: #2ecc71;
+    -kk-primary-100: #F8BBD0;
+    -kk-primary-200: #F48FB1;
+    -kk-primary-300: #F06292;
+    -kk-primary-400: #E91E63;
+    -kk-primary-500: #D81B60;
+    -kk-primary-600: #C2185B;
+    -kk-primary-700: #AD1457;
+    -kk-primary-800: #880E4F;
+    -kk-primary-900: #560027;
+
+    -kk-secondary-100: #FEEBEE;
+    -kk-secondary-200: #FDD5DB;
+    -kk-secondary-300: #FBA3B5;
+    -kk-secondary-400: #F88A9B;
+    -kk-secondary-500: #F8BBD0;
+    -kk-secondary-600: #F57C8D;
+    -kk-secondary-700: #E91E63;
+    -kk-secondary-800: #C2185B;
+    -kk-secondary-900: #AD1457;
+
+    -kk-tertiary-100: #FFE3E0;
+    -kk-tertiary-200: #FFB3AA;
+    -kk-tertiary-300: #FF8A65;
+    -kk-tertiary-400: #FF7043;
+    -kk-tertiary-500: #FFAB91;
+    -kk-tertiary-600: #FF8A65;
+    -kk-tertiary-700: #FF5722;
+    -kk-tertiary-800: #F4511E;
+    -kk-tertiary-900: #BF360C;
+
+    -kk-background: #FCE4EC;
+    -kk-surface: #FFFFFF;
+    -kk-error: #D32F2F;
+    -kk-on-primary: #FFFFFF;
+    -kk-on-secondary: #880E4F;
+    -kk-on-background: #212121;
+    -kk-on-surface: #757575;
+
 }

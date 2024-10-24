@@ -8,7 +8,7 @@ version = "1.0-SNAPSHOT"
 
 dependencies{
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    api("com.ankot:ankot-core:1.0-SNAPSHOT")
+    // api("com.ankot:ankot-core:1.0-SNAPSHOT")
 }
 
 kotlin {

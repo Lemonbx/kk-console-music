@@ -7,6 +7,7 @@ import javafx.scene.control.Label
 
 class MainController {
 
+
     @FXML
     lateinit var counter: Label
 
