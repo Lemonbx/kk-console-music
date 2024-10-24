@@ -17,5 +17,5 @@
     <Label text="Hello"/>
     <Label fx:id="counter" text="Count: 0" style="-fx-text-fill: -kk-primary-color"/>
     <Button onAction="#onBtnClick" text="Click"/>
-
+    <fx:include source="bottom_bar.fxml"/>
 </VBox>

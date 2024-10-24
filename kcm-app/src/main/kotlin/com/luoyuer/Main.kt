@@ -1,18 +1,49 @@
 package com.luoyuer
 
-import com.luoyuer.views.IndexView
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
+import javafx.scene.control.Alert
 import javafx.stage.Stage
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
+import kotlin.reflect.KProperty
 
-class KCMApplication : Application() {
+class KCMApplication : Application(), CoroutineScope {
+
+    lateinit var loader: FXMLLoader
+        private set
+
+    override val coroutineContext: CoroutineContext
+        = SupervisorJob() + Dispatchers.Main + CoroutineName("KCM Application") + kkCoroutineExceptionHandler
+
 
     override fun start(stage: Stage) {
+        instance = this
         val loader = FXMLLoader(javaClass.classLoader.getResource("layout/main.fxml"))
+        this.loader = loader
+        loader.setControllerFactory {
+            println("Create controller $it")
+            it.newInstance()
+        }
         stage.scene = Scene(loader.load())
         stage.show()
     }
+
+    companion object {
+        lateinit var instance: KCMApplication
+        private set
+
+        operator fun getValue(thisRef: Any?, property: KProperty<*>): KCMApplication = instance
+    }
+}
+
+private val kkCoroutineExceptionHandler = CoroutineExceptionHandler { context, throwable ->
+    val alert = Alert(Alert.AlertType.ERROR)
+    alert.title = "Error"
+    alert.headerText = throwable.toString()
+    alert.contentText = throwable.stackTraceToString()
+    alert.show()
 }
 
 fun main(args: Array<String>) {
